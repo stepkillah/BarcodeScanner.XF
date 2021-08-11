@@ -21,7 +21,7 @@ jobs:
       run: nuget restore GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj
 
     - name: Build
-      run: msbuild GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj /p:Configuration=Release   
+      run: msbuild GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj -t:pack /p:Configuration=Release   
 
     - name: Nuget Push
-      run: nuget push GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner/bin/Release/*.nupkg -Source https://nuget.pkg.github.com/stepkillah/index.json -ApiKey ${{secrets.GITHUB_TOKEN}} -SkipDuplicate -NoSymbols
+      run: nuget push GoogleVisionBarCodeScanner/bin/Release/*.nupkg -Source https://nuget.pkg.github.com/stepkillah/index.json -ApiKey ${{secrets.GITHUB_TOKEN}} -SkipDuplicate -NoSymbols
