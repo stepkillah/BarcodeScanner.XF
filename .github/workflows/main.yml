@@ -18,10 +18,10 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Install dependencies
-      run: nuget restore GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj
+      run: dotnet restore GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj
 
     - name: Build
-      run: msbuild GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj /p:Configuration=Release
+      run: dotnet build GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj -c=Release
    
     - name: Nuget Pack
       run: dotnet pack GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj -o ./nuget_pack
