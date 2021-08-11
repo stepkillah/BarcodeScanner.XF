@@ -24,7 +24,7 @@ jobs:
       run: msbuild GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj /p:Configuration=Release
    
     - name: Nuget Pack
-      run: dotnet nuget pack GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj -o ./nuget_pack
+      run: dotnet pack GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj -o ./nuget_pack
 
     - name: Nuget Push
       run: nuget push ./nuget_pack/*.nupkg -Source https://nuget.pkg.github.com/stepkillah/index.json -ApiKey ${{secrets.GITHUB_TOKEN}} -SkipDuplicate -NoSymbols
