@@ -1,9 +1,6 @@
 name: Build Package
 
-on:
-  push:
-    branches-ignore:
-      - '**'
+on: [push]
 
 jobs:
   build:
