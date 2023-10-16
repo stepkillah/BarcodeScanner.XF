@@ -11,17 +11,17 @@ jobs:
     - uses: actions/checkout@v2
     - name: Set default Xamarin SDK versions
       run: |
-        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --android=11.1
-    - name: Setup .NET Core SDK 5.0.x
+        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --android=13.2
+    - name: Setup .NET Core SDK 7.0.x
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: '7.x'
 
     - name: Install dependencies
-      run: nuget restore GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj
+      run: nuget restore BarcodeScanner.Mobile.XamarinForms/BarcodeScanner.Mobile.XamarinForms.csproj
 
     - name: Build
-      run: msbuild GoogleVisionBarCodeScanner/GoogleVisionBarCodeScanner.csproj /p:Configuration=Release   
+      run: msbuild BarcodeScanner.Mobile.XamarinForms/BarcodeScanner.Mobile.XamarinForms.csproj /p:Configuration=Release   
 
     - name: Nuget Push
-      run: nuget push GoogleVisionBarCodeScanner/bin/Release/*.nupkg -Source https://nuget.pkg.github.com/stepkillah/index.json -ApiKey ${{secrets.GITHUB_TOKEN}} -SkipDuplicate -NoSymbols
+      run: nuget push BarcodeScanner.Mobile.XamarinForms/bin/Release/*.nupkg -Source https://nuget.pkg.github.com/stepkillah/index.json -ApiKey ${{secrets.GITHUB_TOKEN}} -SkipDuplicate -NoSymbols
