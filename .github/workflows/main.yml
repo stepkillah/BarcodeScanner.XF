@@ -21,7 +21,7 @@ jobs:
       run: dotnet restore BarcodeScanner.Mobile.Maui/BarcodeScanner.Mobile.Maui.csproj
 
     - name: Build
-      run: dotnet BarcodeScanner.Mobile.Maui/BarcodeScanner.Mobile.Maui.csproj /p:Configuration=Release
+      run: dotnet build BarcodeScanner.Mobile.Maui/BarcodeScanner.Mobile.Maui.csproj /p:Configuration=Release
 
     - name: Nuget Push
       run: dotnet nuget push BarcodeScanner.Mobile.Maui/bin/Release/*.nupkg -Source https://nuget.pkg.github.com/stepkillah/index.json -ApiKey ${{secrets.GITHUB_TOKEN}} -SkipDuplicate -NoSymbols
